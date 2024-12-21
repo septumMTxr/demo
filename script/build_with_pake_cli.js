@@ -21,7 +21,9 @@ console.log('===========================\n');
 
 cd('node_modules/pake-cli');
 let params = `node cli.js ${process.env.URL} --name ${process.env.NAME} --height ${process.env.HEIGHT} --width ${process.env.WIDTH}`;
-
+if (process.env.URL.indexOf("http")==-1){
+  params = `${params} --use-local-file`
+}
 if (process.env.HIDE_TITLE_BAR === 'true') {
   params = `${params} --hide-title-bar`;
 }
